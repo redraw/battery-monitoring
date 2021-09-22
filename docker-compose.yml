@@ -19,14 +19,19 @@ services:
             - SYS_TIME
         depends_on:
             - prometheus
-        command:
+        command: 
             - '--path.rootfs=/host'
+            - '--collector.disable-defaults'
+            - '--collector.powersupplyclass'
+            - '--collector.uname'
 
     grafana:
         image: grafana/grafana
         restart: unless-stopped
         ports:
             - 3001:3000
+        volumes:
+          - ./grafana/provisioning:/etc/grafana/provisioning
 
 volumes:
     prometheus:
