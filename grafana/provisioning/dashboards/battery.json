@@ -8,20 +8,30 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
   "description": "Power information for laptops\nAll you need is node_exporter running.\nPower and battery stats are exposed by the kernel.\n\nTested only on laptops running Linux.",
   "editable": true,
+  "fiscalYearStartMonth": 0,
   "gnetId": 12542,
   "graphTooltip": 0,
-  "id": 1,
-  "iteration": 1632277598895,
+  "iteration": 1714948433572,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -72,7 +82,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.4.1",
       "targets": [
         {
           "expr": "node_power_supply_capacity{instance=~\"$node\"}",
@@ -81,26 +91,18 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Battery Charge",
       "type": "bargauge"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
           "decimals": 3,
-          "mappings": [
-            {
-              "from": "",
-              "id": 0,
-              "operator": "",
-              "text": "",
-              "to": "",
-              "type": 1
-            }
-          ],
+          "mappings": [],
           "max": 13,
           "min": 10,
           "noValue": "0.000",
@@ -141,7 +143,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.4.1",
       "targets": [
         {
           "expr": "node_power_supply_voltage_volt{instance=~\"$node\"}",
@@ -150,13 +152,14 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Voltage",
       "type": "gauge"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
           "displayName": "Cycle Count",
@@ -197,7 +200,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.4.1",
       "targets": [
         {
           "expr": "node_power_supply_cyclecount{instance=~\"$node\"}",
@@ -207,13 +210,14 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Cycle Count",
       "type": "stat"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -263,7 +267,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.4.1",
       "targets": [
         {
           "expr": "100 - ((node_power_supply_energy_full{instance=~\"$node\"} * 100) / node_power_supply_energy_full_design{instance=~\"$node\"})",
@@ -273,8 +277,6 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Battery Degradation Percentage",
       "type": "stat"
     },
@@ -283,7 +285,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -317,7 +322,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.4.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -334,9 +339,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Remaining Energy Watt hour over time",
       "tooltip": {
         "shared": true,
@@ -345,9 +348,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -357,23 +358,17 @@
           "format": "watth",
           "label": "Watt per hour",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:193",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -381,7 +376,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -414,7 +412,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.4.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -437,9 +435,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Voltage over time",
       "tooltip": {
         "shared": true,
@@ -448,9 +444,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -461,8 +455,6 @@
           "format": "volt",
           "label": "Voltage",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
@@ -470,14 +462,11 @@
           "format": "short",
           "label": "",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -485,7 +474,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -518,7 +506,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.4.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -528,17 +516,19 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "60 * delta(node_power_supply_energy_watthour{instance=~\"$node\"}[5m]) / 5 * 1000",
+          "expr": "rate(node_power_supply_energy_watthour[5m]) * 3600",
           "interval": "",
           "legendFormat": "Battery Rate",
           "refId": "A"
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Battery Rate per hour",
       "tooltip": {
         "shared": true,
@@ -547,9 +537,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -559,23 +547,17 @@
           "format": "mwatt",
           "label": "mW",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:455",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -583,7 +565,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -616,7 +601,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.4.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -633,9 +618,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Battery Charge over time",
       "tooltip": {
         "shared": true,
@@ -644,9 +627,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -654,29 +635,25 @@
         {
           "$$hashKey": "object:454",
           "format": "percent",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:455",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -874,11 +851,18 @@
       },
       "id": 6,
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
         "frameIndex": 3,
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.4.1",
       "targets": [
         {
           "expr": "node_power_supply_info{instance=~\"$node\"}",
@@ -890,8 +874,6 @@
           "refId": "C"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Measured Batteries",
       "transformations": [
         {
@@ -915,8 +897,8 @@
       "type": "table"
     }
   ],
-  "refresh": false,
-  "schemaVersion": 27,
+  "refresh": "",
+  "schemaVersion": 35,
   "style": "dark",
   "tags": [
     "prometheus",
@@ -926,16 +908,16 @@
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "Prometheus",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
         "definition": "label_values(node_uname_info{nodename=~\"$hostname\"},instance)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "IP",
@@ -951,22 +933,21 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
       },
       {
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "host",
           "value": "host"
         },
-        "datasource": "Prometheus",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
         "definition": "label_values(node_uname_info, job)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "JOB",
@@ -982,25 +963,23 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
       },
       {
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "Prometheus",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
         "definition": "label_values(node_uname_info{job=~\"$job\"}, nodename)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
-        "label": null,
         "multi": true,
         "name": "hostname",
         "options": [],
@@ -1013,22 +992,21 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
       },
       {
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "Prometheus",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
         "definition": "label_values(node_power_supply_present,power_supply)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Battery",
@@ -1044,7 +1022,6 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -1071,5 +1048,6 @@
   "timezone": "",
   "title": "A dashboard for laptop batteries",
   "uid": "0YCnpjWMk",
-  "version": 2
+  "version": 1,
+  "weekStart": ""
 }
